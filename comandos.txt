@@ -1,0 +1,125 @@
+Informações sobre a manipulação e uso do git
+
+comandos da aula 2:
+git status - verifica os arquivos pendentes dentro do diretório
+git add - seleciona os itens para envio ao repositório (podeser o nome do arquivo ou pasta, * .extensão ou apenas o '.', selecionando todos os arquivos pendentes)
+criação do arquivo '.gitignore' para ser preenchido com os nomes dos arquivos que devem ser ingonorados quando o comando git status for adicionado.
+
+Fluxo macro = Working Directory -> (comando: git add) -> Staging Area -> (comando: git commit) -> Git Directory
+
+commit sem necessidade de 'git add' == comando "" git commit -a -m "mensagem" ""
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// visualizar alterações no git
+
+comando 'git diff' para verficiar as últimas alterações do arquivo (SE ESTIVER NA STAGING AREA)
+
+comando 'git diff --staged' para verificar alterações memso que ja add .
+
+// git log
+lista todos os commits realizados
+
+para listar os logs com mais detalhes podeset o usado o parâmetro '-p' == git log -p
+pode ser utilizado o parâmetro de quantidade após o -p == git log -p -1 ====> vai trazer apenas o último commit
+
+para realizar visualizações de relatórios de commits, utilizar o comando 'gitk' --- Abre interface gráfica.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Caso tenha realizado um commit antes da hora ou de forma incorreta, é possivel realizar uma "edição" nele.
+
+Com os comandos $ git log --pretty=oneline ====> gera logs dos últimos commits em apenas um linha
+
+comando para edição do último commit feito: $ git ommit --amend -m "Nova mensagem do commit".
+
+
+// Desfazer o 'add'
+$ git reset HEAD "nome do arquivo" ===> retirado da stage area
+
+
+// Desfazer alteraçõe sno arquivo
+após o 'add' e um novo git status, podemos ver o que foi alterado. Casoqueira voltar aúltimo commit o comando é:
+$ git checkout -- "nome do arquivo"
+
+retorna a última alteração
+
+ANDANDO ENTRE AS TAGS - VERSÕES DE FORMA MAIS FÁCIL
+
+** atualiza os diretórios e conforme a versão:
+comando: $git checkout "tag"
+
+
+// voltar para branch master - original/atual
+$git checkout master
+
+deletando tag === $git tag -d "tag"
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// BRANCHS
+
+ramificações dentro do repositório GIT.
+
+exemplo de cópias de segurança;
+
+da pra criar ambientes diferentes: testes, desenvolvimento, protótipos, produção, etc
+
+
+criando uma nova branch:
+$ git branch "nome da branch criada"
+
+alteração de branch;
+$ git checkout "nome da branch"
+
+
+ou: $git checkout -b "nome da branch"
+** vai criar e alterar para a branch
+
+
+após as alterações em uma branch e o objetivo é passar para a branch master(produção), deveser fazer a adição dela
+
+Vai estar na branch de destino, e executar um "merge":
+$ git merge "de qual branch vai trazer"
+** vai fazer o update e mesclar os conteudos das duas branchs
+
+// Para listar todas as branchs, execute: 
+$ git branch
+
+// para deletar uma branch, execute:
+$ git branch -d "nome da branch"
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// GIT EM AMBIENTE LOCAL
+
+Para incializar um repositório em ambiente local, executa comando:
+$git init --bare
+
+deve ser feito a clonagem do repositório e criação do ambiente de dev
+$ git clone file////"nome do servidor/nome do dirtório"  "apelido"
+
+
+trabalhando em equipe será necessário receber atualizações no projeto
+
+no caso de algum dev ter atualizado a brnach master do servidor local, é necessário fazer um 'pull' para atualizar seu ambiente
+
+
+$ git push origin master ou outra branch ===> empurrar para o repositório
+
+$git pull origin master ou outra branch ===> puxa as atualizações de uma branch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
